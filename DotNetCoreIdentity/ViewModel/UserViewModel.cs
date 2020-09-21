@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace DotNetCoreIdentity.ViewModel
     {
         [Required]
         [EmailAddress]
+        [Remote(action: "IsEmailExists", controller: "Account")]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
@@ -19,5 +21,11 @@ namespace DotNetCoreIdentity.ViewModel
         [Compare("Password", ErrorMessage ="Password doesn't match")]
         [Display(Name ="Confirm Password")]
         public string ConfirmPassword { get; set; }
+
+        [Required]       
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
     }
 }

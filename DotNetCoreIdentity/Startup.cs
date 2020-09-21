@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using DotNetCoreIdentity.Models;
 
 namespace DotNetCoreIdentity
 {
@@ -34,7 +35,7 @@ namespace DotNetCoreIdentity
         {
                       
             services.AddDbContext<ProductContext>(option => option.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ProductContext>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.Configure<IdentityOptions>(options=> {
