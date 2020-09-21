@@ -102,5 +102,12 @@ namespace DotNetCoreIdentity.Controllers
                 return Json("Email already exists!");
             }
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
